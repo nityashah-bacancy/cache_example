@@ -18,7 +18,7 @@ jobs:
        id: cache-npm
        with: 
          path: ~/.npm 
-         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+         key: ${{ runner.os }}-node-${{ hashFiles('home/nitya/cache_example/url-shortner/app/package.json') }}
          restore-keys: |
            ${{ runner.os }}-node-
            ${{ runner.os }}
