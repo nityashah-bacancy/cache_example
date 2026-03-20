@@ -9,27 +9,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-steps:
-  - name: Checkout to repository on github runner
-    uses: actions/checkout@v5
+    steps:
+     - name: Checkout to repository on github runner
+       uses: actions/checkout@v5
 
-  - name: Cache the dependencies
-    uses: actions/cache@v4
-    id: cache-npm
-    with: 
-      path: ~/.npm 
-      key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      restore-keys: |
-        ${{ runner.os }}-node-
-        ${{ runner.os }}
+     - name: Cache the dependencies
+       uses: actions/cache@v4
+       id: cache-npm
+       with: 
+         path: ~/.npm 
+         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+         restore-keys: |
+           ${{ runner.os }}-node-
+           ${{ runner.os }}
 
   
-  - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-    name: List the state of node modules
-    continue-on-error: true
-    run: npm list 
+     - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+       name: List the state of node modules
+       continue-on-error: true
+       run: npm list 
 
-  - name: Install dependencies
-    run: npm install 
+     - name: Install dependencies
+       run: npm install 
 
 
